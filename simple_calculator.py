@@ -1,39 +1,42 @@
-def get_number(prompt):
-    value = input(prompt)
-    if value.replace('.', '', 1).isdigit():
-        return float(value) if '.' in value else int(value)
+# Simple calculator without using any functions
+print("Simple calculator ")
+
+# Read and validate the first number inline
+num1_input = input("Enter the first number: ")
+try:
+    num1 = float(num1_input) if ('.' in num1_input) else int(num1_input)
+except Exception:
     print("Error: Please enter a valid number.")
-    return None
-
-num1 = get_number("Enter the first number: ")
-if num1 is None:
     exit()
 
-num2 = get_number("Enter the second number: ")
-if num2 is None:
+# Read and validate the second number inline
+num2_input = input("Enter the second number: ")
+try:
+    num2 = float(num2_input) if ('.' in num2_input) else int(num2_input)
+except Exception:
+    print("Error: Please enter a valid number.")
     exit()
 
+# Choose operation and compute result using inline conditionals
 operation = input("Choose an operation (+, -, *, /): ")
-result = None
-expression = None
 
 if operation == "+":
     result = num1 + num2
-    expression = f"{num1} + {num2} = {result}"
+    expr = f"{num1} + {num2} = {result}"
 elif operation == "-":
     result = num1 - num2
-    expression = f"{num1} - {num2} = {result}"
+    expr = f"{num1} - {num2} = {result}"
 elif operation == "*":
     result = num1 * num2
-    expression = f"{num1} * {num2} = {result}"
+    expr = f"{num1} * {num2} = {result}"
 elif operation == "/":
     if num2 == 0:
         print("Error: Division by zero is not allowed.")
         exit()
     result = num1 / num2
-    expression = f"{num1} / {num2} = {result}"
+    expr = f"{num1} / {num2} = {result}"
 else:
     print("Error: Unsupported operation. Please choose +, -, *, or /.")
     exit()
 
-print(expression)
+print(expr)
